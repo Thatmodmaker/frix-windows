@@ -1,5 +1,8 @@
 # Frix for Windows
 
-Download: https://thatmodmaker.github.io/frix-windows/
+Download Frix for Windows 10 or 11 (x64) from the [Frix download page][downloads]. The public edition opens without a code and stores chats in your Windows profile. Existing installations using the GitHub update feed can update from inside Frix.
 
-The newest installer is always at https://github.com/Thatmodmaker/frix-windows/releases/latest/download/Frix-Setup.exe. Frix updates itself from the latest release.
+Frix Motion is also available as a [developer preview for Apple silicon Macs][motion]. It requires macOS 13 or later.
+
+[downloads]: https://thatmodmaker.github.io/frix-windows/
+[motion]: https://github.com/Thatmodmaker/frix-windows/releases/tag/frix-motion-v1.0.31

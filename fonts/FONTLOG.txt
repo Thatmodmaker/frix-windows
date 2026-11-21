@@ -1,0 +1,120 @@
+FONTLOG for Frix Sans, Frix Serif and Frix Mono
+================================================
+
+This file describes the Frix type family and how it differs from the fonts it
+was made from. Keep it with the fonts and with any derivative of them.
+
+
+Basic font information
+----------------------
+
+Frix Sans    Interface face: buttons, labels, settings, the user's messages.
+             Variable: width 75-100, weight 300-700. Roman and italic.
+             Modified version of Instrument Sans by Rodrigo Fuenzalida.
+
+Frix Serif   Reading face: replies, documents, headlines.
+             Variable: optical size 7-48, weight 300-800. Roman and italic.
+             Latin, Greek and Cyrillic.
+             Modified version of Literata by TypeTogether.
+
+Frix Mono    Code, numbers, small labels, timers.
+             Variable: weight 300-700. Roman and italic.
+             Modified version of Spline Sans Mono by Sorkin Type.
+
+All three are released under the SIL Open Font License 1.1 (see OFL.txt).
+None of the original fonts declares a Reserved Font Name, and the new names do
+not use the original names.
+
+Files: dist/ttf/*.ttf (variable TrueType) and dist/woff2/*.woff2, plus
+dist/frix-fonts.css with ready-made @font-face rules.
+
+
+Sources
+-------
+
+The bases were taken only from github.com/google/fonts (ofl/...). Their
+SHA-256 sums and the google/fonts commits are recorded in src/build.py and
+checked on every build.
+
+  ofl/instrumentsans   InstrumentSans[wdth,wght].ttf, InstrumentSans-Italic[wdth,wght].ttf
+  ofl/literata         Literata[opsz,wght].ttf, Literata-Italic[opsz,wght].ttf
+  ofl/splinesansmono   SplineSansMono[wght].ttf, SplineSansMono-Italic[wght].ttf
+
+Build:  python3 src/build.py           (bases in src/bases)
+        python3 src/build.py --fetch   (download the bases again first)
+
+The specimen compares the new fonts with Anthropic Sans, Serif and Mono, which
+Frix loads today. Those files were used only as a visual reference and as
+measured targets (x-height, stem width, line length). No outline, metric,
+kerning or any other data from them is in the Frix fonts.
+
+
+ChangeLog
+---------
+
+2026-10-22  Version 1.000, first Frix release
+
+All three families
+- New names: name IDs 1, 2, 3, 4, 5, 6, 16, 17 and 25, unique PostScript names
+  (FrixSans-Regular, FrixSerif-Italic, ...), named instances and STAT rebuilt
+  in Frix's names. Vendor ID FRIX, version 1.000. The original copyright
+  notices stay in name ID 0 with "Frix modifications 2026" added; the original
+  designers stay credited in name ID 9.
+- Weight axis re-centred and relabelled in Frix's scale, so Frix 400 has the
+  stem weight and page colour Frix's interface was tuned for. An avar mapping
+  keeps the steps in between even.
+    Frix weight        300  400  500  600  700  800
+    Sans  (base)       400  450  527  615  700
+    Serif (base)       307  427  535  630  755  880
+    Serif italic       310  440  552  650  785  900
+    Mono  (base)       315  410  515  620  700
+- Shared vertical metrics: ascender 0.99 em, descender 0.26 em, no line gap,
+  in hhea and OS/2 typo (USE_TYPO_METRICS set). All three have the same
+  1.25 em line box. Windows metrics cover the outlines.
+- HVAR rebuilt from gvar after the edits. Fonts stay unhinted, like the
+  originals (gasp and prep kept).
+
+Frix Sans
+- Lowercase x-height raised from 0.510 to 0.540 em. Points inside the
+  x-height band are stretched; everything above it (ascenders, dots, accents,
+  mark attachment points) moves up without changing shape; descenders are
+  untouched. Done on the default outlines and on every gvar delta, so every
+  width and weight interpolates as before. In the italic the points move along
+  the slant so stems stay straight.
+- Designer-drawn alternates promoted to the default forms:
+    ss01  round dots on i, j, punctuation, quotes and accents
+    ss03  y with a curved tail
+  The original forms are still there: ss01 and ss03 now switch back to them
+  (feature names updated to say so).
+- Spacing for 12-17 px interface text: +5/1000 em on each side of every
+  spacing glyph; the middle dot (U+00B7), which Frix uses as a separator,
+  gets the same sidebearings as the period; word space +2/1000 em per side.
+- The "www" ligature was taken out of liga (the glyph stays in the font).
+
+Frix Serif
+- Lowercase x-height raised from 0.507 to 0.532 em with the same method
+  (Latin, Greek and Cyrillic lowercase).
+- Optical-size axis limited to 7-48 (was 7-72), so large headlines keep a
+  calmer, sturdier contrast.
+- Roman spacing tightened by 5/1000 em on each side, to match the compact
+  texture Frix replies have today.
+- The Th ligature was taken out of liga (its h would no longer match the new
+  x-height); the glyph stays in the font.
+
+Frix Mono
+- Designer-drawn alternate promoted to the default form:
+    ss02  i with a curved tail and no foot slab (ss02 now gives the slab i)
+- Every small round dot (i and j, period, colon, semicolon, ellipsis,
+  dieresis, middle dot, the dot in the zero, ...) is now an exact circle at
+  every weight. Advance widths are unchanged; every glyph stays one cell wide.
+
+
+Acknowledgements
+----------------
+
+Instrument Sans: Rodrigo Fuenzalida (fragTYPE), for Instrument.
+Literata: TypeTogether (Veronika Burian, José Scaglione), Irene Vlachou
+  (Greek), Vera Evstafieva (Cyrillic), commissioned by Google.
+Spline Sans Mono: Eben Sorkin and Mirko Velimirovic, Sorkin Type.
+Thanks to the Google Fonts team for maintaining the sources, and to the
+fontTools project.
